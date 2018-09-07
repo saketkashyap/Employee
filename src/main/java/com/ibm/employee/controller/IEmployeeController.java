@@ -22,7 +22,7 @@ public interface IEmployeeController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/all")
+	@RequestMapping(value = "/all",method=RequestMethod.GET)
 	public ResponseEntity<List<EmployeeResponseModel>> getAllEmployees();
 	
 	/**
