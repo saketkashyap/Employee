@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ibm.employee.entities.Employee;
 import com.ibm.employee.model.EmployeeResponseModel;
 
 /**
@@ -23,7 +24,7 @@ public interface IEmployeeController {
 	 * @return
 	 */
 	@RequestMapping(value = "/all",method=RequestMethod.GET)
-	public ResponseEntity<List<EmployeeResponseModel>> getAllEmployees();
+	public ResponseEntity<List<Employee>> getAllEmployees();
 	
 	/**
 	 * 
@@ -31,7 +32,7 @@ public interface IEmployeeController {
 	 * @return
 	 */
 	@RequestMapping(value="/id/{id}",method=RequestMethod.GET)
-	public ResponseEntity<EmployeeResponseModel> getEmployeeById(@PathVariable("id") Integer id);
+	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Integer id);
 	
 	/**
 	 * 

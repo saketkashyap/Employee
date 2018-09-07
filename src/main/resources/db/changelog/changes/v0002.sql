@@ -1,0 +1,2 @@
+Insert into public.employee (firstname,lastname,emailid,companycode) values ('Saket','Kashyap','sak@gmail.com',744);
+Insert into public.employee (firstname,lastname,emailid,companycode) values ('Rahul','Kashyap','rahk@gmail.com',844);
