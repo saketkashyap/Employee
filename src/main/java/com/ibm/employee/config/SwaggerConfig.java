@@ -28,10 +28,16 @@ public class SwaggerConfig {
 	
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("Employee Service")
-				.description("Returns harcoded Employee response. Has only 2 get methods")
+				.description("Returns harcoded Employee response from the database")
 				.contact("sakkashy@in.ibm.com").license("IBM Corportaion")
 				.licenseUrl("sakkashy@in.ibm.com").version("1.0").build();
 	}
+	
+
+	/**
+	 * Change the regex to /. to register the actuator end points as well
+	 * @return
+	 */
 	
 	private Predicate<String> postPaths() {
 		return or(regex("/employee.*"));
