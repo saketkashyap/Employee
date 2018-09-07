@@ -5,6 +5,16 @@ spring:
 server:
   port: 8101    
 
+eureka:
+  client:
+    service-url:
+      defaultZone: ${DISCOVERY_URL:http://localhost:8200}/eureka/
+    fetch-registry: true
+    register-with-eureka: true  
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    
 ---
 spring:
   profiles: default
