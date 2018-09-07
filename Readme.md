@@ -22,7 +22,8 @@ resources/db/changelog/changes folder.
 db.changelog-master.yaml is the master file which controls the version.
 A new entity class has also been introduced which represents the employee table.
 
-IGNORE: java.sql.SQLFeatureNotSupportedException
+Note: Liquibase does not create database. Database needs to be created manually or by some program.
+IGNORE: java.sql.SQLFeatureNotSupportedException(Mismatch between postgres jar and postgres db used)
 
 
 You will also see extensive usage of lombok getter and setter. Lombok jar should be present on the classpath.
