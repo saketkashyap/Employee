@@ -1,6 +1,6 @@
 Tagging : v(version),lw - lightweight tagging
 ----
-git tag v 0.0.01-lw - 
+git tag v 0.0.1-lw - 
 
 Changes : This is a sample microservice. The first version of this microservice will be tagged in git. This microservice serves couple of end points which just returns some hardcoded response.
 
@@ -10,12 +10,12 @@ http://localhost:8101/employee/all
 http://localhost:8101/employee/id/1
 
 ----
-git tag v 0.0.02-lw
+git tag v 0.0.2-lw
 Changes : Additional class for Swagger configuration has been added
 URL for accessing Swagger UI - http://localhost:8101/swagger-ui.html
 
 ---
-git tag v 0.0.03-lw
+git tag v 0.0.3-lw
 
 Changes : liquibase introduced to connect to db and execute sql scripts contained withing 
 resources/db/changelog/changes folder.
@@ -37,5 +37,12 @@ To add the plugin follow the below steps
 
 Note: Lombok has been present in the project from tag v 0.0.01-lw.
 
+----
+git tag v 0.0.4-lw
+
+This version contains some changes to POM.xml as Spring cloud feature is introduced.
+java.sql.SQLFeatureNotSupportedException has been fixed in the version.
+
+Test class has been commented out because of compilation problems, needs to be fixed in later releases.
 
 
