@@ -34,6 +34,16 @@ public interface IEmployeeController {
 	@RequestMapping(value="/id/{id}",method=RequestMethod.GET)
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Integer id);
 	
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/getInfo/{id}",method=RequestMethod.GET)
+	public ResponseEntity<EmployeeResponseModel> getEmployeeAndCompanyById(@PathVariable("id") Integer id);
+	
+	
 	/**
 	 * 
 	 * @param name

@@ -12,4 +12,5 @@ public class EmployeeResponseModel {
 	private String lastName;
 	private String emailId;
 	private Integer companyCode;
+	private CompanyModel company;
 }

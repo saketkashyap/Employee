@@ -45,4 +45,10 @@ java.sql.SQLFeatureNotSupportedException has been fixed in the version.
 
 Test class has been commented out because of compilation problems, needs to be fixed in later releases.
 
+--------------
+git tag v 0.0.5-lw
+
+This version enables communication over fegin client with another microservice registered with same Eureka Server.
+Feign client class has been added. Some model classes have been changed. 
+/company/{id} endpoint has been updated to /getInfo/{id} - because of ambiguity with /company/{code}
 

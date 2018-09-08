@@ -3,8 +3,6 @@ package com.ibm.employee.controller.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Status;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.employee.controller.IEmployeeController;
 import com.ibm.employee.entities.Employee;
+import com.ibm.employee.feign.ICompanyServiceFeign;
+import com.ibm.employee.model.CompanyModel;
 import com.ibm.employee.model.EmployeeResponseModel;
 import com.ibm.employee.service.IEmployeeService;
 
@@ -24,6 +24,9 @@ public class EmployeeControllerImpl implements IEmployeeController {
 
 	@Autowired
 	IEmployeeService employeeService;
+	
+	@Autowired
+	ICompanyServiceFeign companyFeign;
 	final String className = EmployeeControllerImpl.class.toString();
 	List<EmployeeResponseModel> modelList = new ArrayList<>();
 	
@@ -84,6 +87,35 @@ public class EmployeeControllerImpl implements IEmployeeController {
 	public ResponseEntity<Object> getEmployeeByCompanyCode(Integer code) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ResponseEntity<EmployeeResponseModel> getEmployeeAndCompanyById(@PathVariable Integer id) {
+       String methodName = "getEmployeeAndCompanyById(Param Id)";
+		
+		log.info(className+","+methodName);
+		HttpStatus status = HttpStatus.OK;
+		Employee employee = employeeService.getEmployeeById(id);
+		EmployeeResponseModel empModel = new EmployeeResponseModel();
+		if(employee == null)
+		{
+			log.info("employee information for the given id not present in the database");
+			 status = HttpStatus.NOT_FOUND;
+		}
+		else
+		{
+			CompanyModel compa = companyFeign.getCompanyByCompanyCode((int) employee.getCompanycode());
+			 
+			empModel.setCompany(compa);
+			empModel.setCompanyCode((int) employee.getCompanycode());
+			empModel.setEmailId(employee.getEmailid());
+			empModel.setFirstName(employee.getFirstname());
+			empModel.setLastName(employee.getLastname());
+			empModel.setId((int) employee.getId());
+		
+		}
+		
+		return ResponseEntity.status(status).body(empModel);
 	}
 
 }
