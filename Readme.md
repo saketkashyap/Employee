@@ -52,3 +52,8 @@ This version enables communication over fegin client with another microservice r
 Feign client class has been added. Some model classes have been changed. 
 /company/{id} endpoint has been updated to /getInfo/{id} - because of ambiguity with /company/{code}
 
+----------------
+git tag v 0.0.6-lw
+
+This version contains connection to external rabbit mq and writes command description on to the message bus.
+
