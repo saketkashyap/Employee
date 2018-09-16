@@ -1,5 +1,37 @@
-{"properties": [{
-  "name": "ribbon.eureka.enabled",
-  "type": "java.lang.String",
-  "description": "A description for 'ribbon.eureka.enabled'"
-}]}
+{"properties": [
+  {
+    "name": "ribbon.eureka.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'ribbon.eureka.enabled'"
+  },
+  {
+    "name": "RabbitMq.commandMsg.exchange",
+    "type": "java.lang.String",
+    "description": "A description for 'RabbitMq.commandMsg.exchange'"
+  },
+  {
+    "name": "RabbitMq.commandMsg.routingKey",
+    "type": "java.lang.String",
+    "description": "A description for 'RabbitMq.commandMsg.routingKey'"
+  },
+  {
+    "name": "RabbitMq.orderMsg.exchange",
+    "type": "java.lang.String",
+    "description": "A description for 'RabbitMq.orderMsg.exchange'"
+  },
+  {
+    "name": "RabbitMq.orderMsg.routingKey",
+    "type": "java.lang.String",
+    "description": "A description for 'RabbitMq.orderMsg.routingKey'"
+  },
+  {
+    "name": "Rabbit-mq.command-msg.routingkey",
+    "type": "java.lang.String",
+    "description": "A description for 'Rabbit-mq.command-msg.routingkey'"
+  },
+  {
+    "name": "Rabbit-mq.order-msg.routingkey",
+    "type": "java.lang.String",
+    "description": "A description for 'Rabbit-mq.order-msg.routingkey'"
+  }
+]}

@@ -2,4 +2,7 @@ spring:
   application:
     name: employee-service
 
-   
+  cloud:
+    config:
+      uri: http://localhost:9090
+    

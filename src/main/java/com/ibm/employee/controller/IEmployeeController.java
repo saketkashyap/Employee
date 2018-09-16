@@ -1,6 +1,8 @@
 package com.ibm.employee.controller;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,9 +24,11 @@ public interface IEmployeeController {
 	/**
 	 * 
 	 * @return
+	 * @throws TimeoutException 
+	 * @throws IOException 
 	 */
 	@RequestMapping(value = "/all",method=RequestMethod.GET)
-	public ResponseEntity<List<Employee>> getAllEmployees();
+	public ResponseEntity<List<Employee>> getAllEmployees() throws IOException, TimeoutException;
 	
 	/**
 	 * 

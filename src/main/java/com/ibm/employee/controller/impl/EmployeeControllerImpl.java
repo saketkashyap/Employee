@@ -1,9 +1,13 @@
 package com.ibm.employee.controller.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +18,13 @@ import com.ibm.employee.entities.Employee;
 import com.ibm.employee.feign.ICompanyServiceFeign;
 import com.ibm.employee.model.CompanyModel;
 import com.ibm.employee.model.EmployeeResponseModel;
+import com.ibm.employee.mq.MessageSender;
 import com.ibm.employee.service.IEmployeeService;
+import com.ibm.employee.util.MessageSenderUtil;
+import com.ibm.employee.util.MsgPrepare;
 
 import lombok.extern.slf4j.Slf4j;
-
+@RefreshScope
 @RestController
 @Slf4j
 public class EmployeeControllerImpl implements IEmployeeController {
@@ -27,13 +34,28 @@ public class EmployeeControllerImpl implements IEmployeeController {
 	
 	@Autowired
 	ICompanyServiceFeign companyFeign;
+	
+	@Autowired
+	MsgPrepare msgPrepare;
+	
+	@Autowired
+	MessageSender messageSender;
+	
+	@Autowired
+	MessageSenderUtil senderUtil;
+	
+	@Value("${Employees.id.firstname}")
+	String firstName;
+	
 	final String className = EmployeeControllerImpl.class.toString();
 	List<EmployeeResponseModel> modelList = new ArrayList<>();
 	
 	@Override
-	public ResponseEntity<List<Employee>> getAllEmployees() {
+	public ResponseEntity<List<Employee>> getAllEmployees() throws IOException, TimeoutException {
 		String methodName = "getAllEmployees";
-		log.info(className+","+methodName);
+		
+		log.info(className+","+methodName+","+firstName);
+		senderUtil.createMsgObject("commandMsg", msgPrepare.prepareCommandMsg(methodName, methodName, "running"));
 		List<Employee> employeeList = employeeService.getAllEmployees();
 		HttpStatus status = HttpStatus.FOUND;
 		if(employeeList.size()<0)

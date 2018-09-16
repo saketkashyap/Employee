@@ -40,7 +40,7 @@ public class SwaggerConfig {
 	 */
 	
 	private Predicate<String> postPaths() {
-		return or(regex("/employee.*"));
+		return or(regex("/.*"));
 	}
 	
 }

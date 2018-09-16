@@ -1,7 +1,13 @@
 spring:
   profiles:
     active: default
-    
+  
+  rabbitmq:
+    host: 192.168.99.100
+    port: 5672
+    username: Admin
+    password: Admin
+    virtual-host: saket 
 server:
   port: 8101    
 
@@ -18,6 +24,16 @@ eureka:
 ribbon:
   eureka:
    enabled: true    
+
+RabbitMq:
+  commandMsg: 
+   exchange: commandandOrderExchange
+   routingkey: commandKey
+   
+  orderMsg: 
+   exchange: commandandOrderExchange
+   routingkey: orderKey
+  
 ---
 spring:
   profiles: default
