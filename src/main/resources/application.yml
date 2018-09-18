@@ -33,7 +33,12 @@ RabbitMq:
   orderMsg: 
    exchange: commandandOrderExchange
    routingkey: orderKey
-  
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: heapdump,liquibase,loggers,prometheus,threaddump,info,metrics,health
 ---
 spring:
   profiles: default
